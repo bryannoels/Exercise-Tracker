@@ -1,198 +1,59 @@
-# File Metadata Analyzer API
+# Exercise Tracker API
 
 ## Overview
 
-The File Metadata Analyzer API is a lightweight and efficient service that instantly extracts essential information from uploaded files without storing or processing the actual file content. This tool provides users with quick access to file details like name, type, and size, making it perfect for file validation, organization, and content management workflows.
+The Exercise Tracker API is a simple and reliable tool designed to help users keep track of their physical activities. It allows you to create profiles, log various exercises with details like duration and date, and view summaries of your workout history.
 
-Whether you're building a file upload system, need to validate file types before processing, or want to display file information to users, this API delivers the metadata you need in seconds.
-
-## Key Benefits
-
-- **Instant File Analysis:** Get file metadata immediately upon upload without waiting for complex processing
-- **Privacy-Focused:** Files are analyzed in memory and never stored on the server, ensuring complete data privacy
-- **Universal File Support:** Works with any file type - documents, images, videos, archives, and more
-- **Lightweight & Fast:** Minimal resource usage with quick response times for optimal user experience
-- **Easy Integration:** Simple REST API that works with any programming language or platform
-- **Validation Ready:** Perfect for implementing file type and size restrictions in your applications
-
-## Business Use Cases
-
-### For Businesses & Organizations
-- **Document Management Systems:** Automatically categorize and organize uploaded files based on type and size
-- **Content Management:** Validate file uploads before processing to ensure they meet company standards
-- **Storage Optimization:** Monitor file sizes to manage storage costs and implement upload limits
-- **Compliance & Security:** Screen file types to prevent unauthorized file formats from entering your systems
-
-### For Developers & Applications
-- **File Upload Validation:** Implement client-side file checks before sending files to expensive processing services
-- **User Interface Enhancement:** Display file information to users immediately after file selection
-- **Batch Processing:** Analyze multiple files quickly to sort and route them to appropriate processing pipelines
-- **API Gateway:** Use as a preliminary step before routing files to specialized processing services
-
-### For Content Creators & Educators
-- **Media Asset Management:** Quickly identify and organize digital assets by type and size
-- **Course Material Organization:** Automatically categorize educational resources and documents
-- **Portfolio Management:** Analyze and organize creative files for better project management
-
-## How It Works
-
-1. **Upload Any File:** Submit a file through the API endpoint using standard multipart form data
-2. **Instant Analysis:** The system immediately extracts metadata from the file header and properties
-3. **Receive Results:** Get back essential file information including original name, MIME type, and size in bytes
-4. **Privacy Protection:** Your file is processed in memory only and never stored on our servers
-
-## Why Choose This API?
-
-- **Zero Storage Footprint:** Files are never saved, ensuring complete privacy and minimal server overhead
-- **Universal Compatibility:** Works with any file format without requiring specific codecs or libraries
-- **Developer-Friendly:** Simple, straightforward API that can be integrated in minutes
-- **Production-Ready:** Built with Express.js for reliability and scalability
-- **Cost-Effective:** Minimal resource usage means lower hosting costs and faster response times
-
-## Getting Started
-
-Simply send a POST request with your file to the `/api/fileanalyse` endpoint and receive instant metadata. No authentication required, no file size limits, and no complex setup needed.
+Whether you're an individual trying to maintain a healthy lifestyle or a business looking to offer fitness tracking capabilities, this API provides an easy and efficient way to manage exercise data.
 
 ---
 
-# Technical Documentation
+## Key Benefits
 
-## Software Architecture Overview
+- **User Management:** Easily create and manage individual user profiles.  
+- **Exercise Logging:** Record exercise activities with descriptions, durations, and dates.  
+- **Activity Summaries:** Retrieve detailed logs of exercises to monitor progress over time.  
+- **Flexible Date Filters:** View exercise history for specific time periods to analyze patterns.  
+- **Simple Date Format:** Dates are displayed in a clear, readable format (e.g., "Mon Jun 02 2025") for easy understanding.
 
-The File Metadata Analyzer API is built using a minimalist architecture optimized for speed and privacy:
+---
 
-- **Express.js Framework:** Lightweight web server handling HTTP requests and routing
-- **Multer Middleware:** Handles multipart/form-data file uploads with memory storage
-- **Memory-Only Processing:** Files are processed entirely in RAM, never touching disk storage
-- **CORS Enabled:** Cross-origin resource sharing configured for web browser compatibility
-- **Environment Configuration:** Uses dotenv for flexible deployment configuration
-- **Stateless Design:** Each request is independent, enabling easy horizontal scaling
+## Who Can Use This?
 
-### Key Architecture Decisions
+- **Fitness Coaches & Trainers:** Track client workouts and progress effortlessly.  
+- **Health & Wellness Apps:** Integrate exercise tracking into your platform without building from scratch.  
+- **Individual Users:** Maintain a personal exercise diary to stay motivated and healthy.  
+- **Businesses:** Offer value-added services with a simple fitness tracking backend.
 
-- **Memory Storage:** Uses `multer.memoryStorage()` to process files in memory, ensuring privacy and speed
-- **No Persistence:** Files are discarded immediately after analysis, minimizing security risks
-- **Minimal Dependencies:** Uses only essential packages to reduce attack surface and improve performance
+---
 
-## API Documentation
+## How It Works
 
-### 1. Analyze File Metadata
+1. **Create a User Profile:** Set up a new account with a unique username.  
+2. **Log Exercises:** Add details about your workouts, including what you did, how long, and when.  
+3. **Review Your Activity:** Access your exercise history anytime, filtered by dates or limited to recent entries.
 
-**Endpoint:**  
-`POST /api/fileanalyse`
+All dates are shown in an easy-to-read style to keep your records clear and straightforward.
 
-**Request:**
-- **Content-Type:** `multipart/form-data`
-- **Form Field:** `upfile` (file) — The file to analyze
+---
 
-**Behavior:**
-- Accepts any file type and size
-- Extracts metadata from file properties
-- Processes file in memory without storage
-- Returns structured file information
+## Why Choose This API?
 
-**Response:**
-- On success:
-  ```json
-  {
-    "name": "document.pdf",
-    "type": "application/pdf",
-    "size": 2048576
-  }
-  ```
-- On error (no file uploaded):
-  ```json
-  { "error": "No file uploaded" }
-  ```
+- **Ease of Use:** Designed for straightforward integration and simple operation.  
+- **Accurate Tracking:** Supports detailed exercise records with reliable date handling.  
+- **Flexible Reporting:** Enables tailored views of your activity data to support your fitness goals.
 
-**Response Fields:**
-- `name` (string): Original filename as uploaded by the user
-- `type` (string): MIME type of the file (e.g., "image/jpeg", "text/plain")
-- `size` (number): File size in bytes
+---
 
-### 2. Application Root
+## Getting Started
 
-**Endpoint:**  
-`GET /`
+You don't need to worry about complicated setups or technical details. The API is ready to help you or your users start tracking exercises quickly and effectively.
 
-**Response:**  
-Serves the main HTML interface from `/views/index.html`
+---
 
-### 3. Static Assets
+## Summary
 
-**Endpoint:**  
-`GET /public/*`
-
-**Behavior:**  
-Serves static files from the `/public` directory
-
-## Environment Configuration
-
-The application uses environment variables for configuration:
-
-- `PORT` (optional): Server port number (defaults to 3000)
-
-## Installation & Setup
-
-1. **Install Dependencies:**
-   ```bash
-   npm install express cors multer dotenv
-   ```
-
-2. **Environment Setup:**
-   Create a `.env` file (optional):
-   ```
-   PORT=3000
-   ```
-
-3. **Run the Application:**
-   ```bash
-   node server.js
-   ```
-
-## File Upload Examples
-
-### Using cURL
-```bash
-curl -X POST -F "upfile=@/path/to/your/file.pdf" http://localhost:3000/api/fileanalyse
-```
-
-### Using JavaScript (Browser)
-```javascript
-const formData = new FormData();
-formData.append('upfile', fileInput.files[0]);
-
-fetch('/api/fileanalyse', {
-  method: 'POST',
-  body: formData
-})
-.then(response => response.json())
-.then(data => console.log(data));
-```
-
-### Using Python
-```python
-import requests
-
-with open('file.pdf', 'rb') as f:
-    files = {'upfile': f}
-    response = requests.post('http://localhost:3000/api/fileanalyse', files=files)
-    print(response.json())
-```
-
-## Security Considerations
-
-- **Memory Processing:** Files are processed in memory and never written to disk
-- **No File Storage:** Zero persistence means no risk of unauthorized file access
-- **Input Validation:** Always check for file presence before processing
-- **CORS Configuration:** Configured for cross-origin requests - adjust as needed for production
-
-## Deployment Notes
-
-- **Memory Usage:** Monitor memory consumption for large files or high concurrency
-- **File Size Limits:** Consider implementing upload size limits for production use
-- **Error Handling:** Add additional error handling for production environments
-- **Logging:** Implement proper logging for monitoring and debugging
+Exercise Tracker API is the perfect solution to keep fitness data organized, accessible, and meaningful, whether you're an individual, trainer, or business. Stay motivated, analyze your workouts, and reach your health goals with confidence.
 
 ---
 
@@ -209,12 +70,101 @@ The Exercise Tracker API is built with a simple and efficient architecture focus
 - **JSON Communication:** All data exchange uses JSON format for easy integration
 - **Unique ID Generation:** Uses timestamp and random string combination for user identification
 
+### System Architecture Diagram
+
+```mermaid
+graph TB
+    A[Client Applications] --> B[Express.js Server]
+    B --> C[CORS Middleware]
+    B --> D[JSON Parser]
+    B --> E[URL Encoder]
+    B --> F[Static File Server]
+    
+    B --> G[API Routes]
+    G --> H[Users Array]
+    G --> I[Exercises Array]
+    
+    H --> J[User Management]
+    I --> K[Exercise Tracking]
+    
+    J --> L[Create User]
+    J --> M[List Users]
+    
+    K --> N[Add Exercise]
+    K --> O[Get Exercise Log]
+    K --> P[Filter by Date]
+    K --> Q[Limit Results]
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style H fill:#fff3e0
+    style I fill:#fff3e0
+```
+
+### Data Flow Diagram
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Express Server
+    participant U as Users Array
+    participant E as Exercises Array
+    
+    Note over C,E: User Creation Flow
+    C->>S: POST /api/users {username}
+    S->>S: Generate unique ID
+    S->>U: Store user data
+    S->>C: Return {username, _id}
+    
+    Note over C,E: Exercise Logging Flow
+    C->>S: POST /api/users/:id/exercises
+    S->>U: Validate user exists
+    S->>S: Process date & duration
+    S->>E: Store exercise data
+    S->>C: Return formatted exercise
+    
+    Note over C,E: Log Retrieval Flow
+    C->>S: GET /api/users/:id/logs?filters
+    S->>U: Validate user exists
+    S->>E: Filter exercises by user
+    S->>S: Apply date/limit filters
+    S->>C: Return formatted log
+```
+
 ### Key Architecture Decisions
 
 - **Memory Storage:** Uses JavaScript arrays (`users[]` and `exercises[]`) for data persistence during runtime
 - **Stateless Design:** Each request is independent, enabling easy horizontal scaling
 - **Date Handling:** Flexible date input with automatic formatting to readable date strings
 - **Error Handling:** Proper HTTP status codes and error messages for robust client integration
+
+## API Endpoint Overview
+
+```mermaid
+graph LR
+    A[Exercise Tracker API] --> B[User Management]
+    A --> C[Exercise Tracking]
+    A --> D[Static Content]
+    
+    B --> E[POST /api/users<br/>Create User]
+    B --> F[GET /api/users<br/>List All Users]
+    
+    C --> G[POST /api/users/:id/exercises<br/>Add Exercise]
+    C --> H[GET /api/users/:id/logs<br/>Get Exercise Log]
+    
+    D --> I[GET /<br/>Main Interface]
+    D --> J[GET /public/*<br/>Static Files]
+    
+    H --> K[Query Filters]
+    K --> L[?from=date]
+    K --> M[?to=date]
+    K --> N[?limit=number]
+    
+    style A fill:#2196f3,color:#fff
+    style B fill:#4caf50,color:#fff
+    style C fill:#ff9800,color:#fff
+    style D fill:#9c27b0,color:#fff
+```
 
 ## API Documentation
 
