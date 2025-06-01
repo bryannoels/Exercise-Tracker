@@ -85,7 +85,7 @@ app.get('/api/users/:_id/logs', (req, res) => {
       date: new Date(date).toDateString()
     }))
   })
-  
+
 })
 
 
