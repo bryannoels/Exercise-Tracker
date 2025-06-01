@@ -54,3 +54,5 @@ You don’t need to worry about complicated setups or technical details. The API
 ## Summary
 
 Exercise Tracker API is the perfect solution to keep fitness data organized, accessible, and meaningful, whether you’re an individual, trainer, or business. Stay motivated, analyze your workouts, and reach your health goals with confidence.
+
+*Last updated: June 2, 2025*
