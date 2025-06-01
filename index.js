@@ -56,9 +56,7 @@ app.post('/api/users/:_id/exercises', (req, res) => {
 app.get('/api/users/:_id/logs', (req, res) => {
   const user = users.find(u => u._id === req.params._id)
   if (!user) return res.status(404).json({ error: 'User not found' })
-
   let log = exercises.filter(e => e._id === user._id)
-
   const { from, to, limit } = req.query
 
   if (from) {
@@ -85,7 +83,6 @@ app.get('/api/users/:_id/logs', (req, res) => {
       date: new Date(date).toDateString()
     }))
   })
-
 })
 
 
